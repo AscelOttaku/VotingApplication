@@ -5,9 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="/data/css/candidates.css">
+  <link rel="stylesheet" href="../css/candidates.css">
   <style>
-    html,
     body {
       margin: 0;
       padding: 0;
@@ -132,11 +131,11 @@
     <div class="candidates-container">
       <#list candidates as candidate>
         <form action="/vote?candidate=${candidate.id}" method="GET" class="candidate-card">
+          <input type="hidden" name="candidate" value="${candidate.id}">
             <div class="text-center mb-3">
               <img src="/img/${candidate.photoUrl}" alt="Candidate" class="rounded">
             </div>
           <p>${candidate.name}</p>
-          <input name="candidateId" type="hidden" value="candidate_id">
           <button type="submit" class="vote">Vote</button>
         </form>
       </#list>
@@ -147,5 +146,4 @@
   <a class="back flex align-center" href="/votes">Show total votes</a>
 </div>
 </body>
-
 </html>

@@ -5,6 +5,8 @@ import service.VotingApplication;
 import utils.Util;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import static utils.Util.createDataModel;
 
@@ -29,8 +31,13 @@ public class LocalVotingServer extends BasicServer {
         }
 
         var candidate = service.findCandidateById(Util.parseLong(candidateId));
+        var votingQuantityInProccent = service.getVoteQuantityInProccent(candidate);
 
-        renderTemplate(exchange, "ftlh/thankyou.ftlh", Util.createDataModel("candidate", candidate));
+        Map<String, Object> dataModel = new HashMap<>();
+        dataModel.put("candidate", candidate);
+        dataModel.put("votingQuantityInProccent", votingQuantityInProccent);
+
+        renderTemplate(exchange, "ftlh/thankyou.ftlh", dataModel);
     }
 
     private void handleMainVotingApplicationRequest(HttpExchange exchange) {

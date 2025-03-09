@@ -60,6 +60,10 @@ public class VotingApplication {
         }
     }
 
+    public Integer getVoteQuantityInProccent(Candidate candidate) {
+        return Util.calculateVoteProccentInAllVotes(candidate.getVotesQuantity(), getTotalVotesQuantity());
+    }
+
     public List<Candidate> getAllCandidates() {
         return repository.getCandidates();
     }
