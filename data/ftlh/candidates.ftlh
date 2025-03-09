@@ -131,12 +131,10 @@
   <main class="flex flex-wrap align-evenly">
     <div class="candidates-container">
       <#list candidates as candidate>
-        <form action="/vote?candidate=${candidate.id}" method="post" class="candidate-card">
-          <#if candidate.photoUrl??>
+        <form action="/vote?candidate=${candidate.id}" method="GET" class="candidate-card">
             <div class="text-center mb-3">
-              <img src="/img/${candidate.photoUrl}" alt="Обложка книги" class="img-fluid rounded" style="max-height: 300px;">
+              <img src="/img/${candidate.photoUrl}" alt="Candidate" class="rounded">
             </div>
-          </#if>
           <p>${candidate.name}</p>
           <input name="candidateId" type="hidden" value="candidate_id">
           <button type="submit" class="vote">Vote</button>

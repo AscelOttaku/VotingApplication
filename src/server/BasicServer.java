@@ -90,7 +90,7 @@ public class BasicServer {
         handler.handle(exchange);
     }
 
-    private void sendResponse404(HttpExchange exchange) {
+    protected void sendResponse404(HttpExchange exchange) {
         String errorMessage = "404 Not Found";
         try {
             sendByteData(exchange, ResponseCodes.NOT_FOUND, ContentType.TEXT_PLAIN, errorMessage.getBytes());
@@ -127,8 +127,6 @@ public class BasicServer {
     }
 
     private static String ensureStartWithSlash(String route) {
-        if (route.startsWith(".")) return route;
-
         return route.startsWith("/") ? route : "/" + route;
     }
 
@@ -177,7 +175,7 @@ public class BasicServer {
         }
     }
 
-    private void redirect(HttpExchange exchange, String path) {
+    protected void redirect(HttpExchange exchange, String path) {
         try {
             exchange.getResponseHeaders().set("Location", path);
             exchange.sendResponseHeaders(ResponseCodes.REDIRECT.getCode(), 0);

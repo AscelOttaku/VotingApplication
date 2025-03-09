@@ -5,17 +5,20 @@ public class Candidate {
     private final long id;
     private final String name;
     private final String photoUrl;
+    private long votesQuantity;
 
     public Candidate(Builder builder) {
         this.id = builder.id != 0 ? builder.id : getIdCount();
         this.name = builder.name;
         this.photoUrl = builder.photoUrl;
+        this.votesQuantity = builder.votesQuantity;
     }
 
     public static class Builder {
         private long id;
         private String name;
         private String photoUrl;
+        private long votesQuantity;
 
         public Builder id(long id) {
             this.id = id;
@@ -29,6 +32,11 @@ public class Candidate {
 
         public Builder photoUrl(String photoUrl) {
             this.photoUrl = photoUrl;
+            return this;
+        }
+
+        public Builder votesQuantity(long votesQuantity) {
+            this.votesQuantity = votesQuantity;
             return this;
         }
 
@@ -51,5 +59,13 @@ public class Candidate {
 
     public long getId() {
         return id;
+    }
+
+    public long getVotesQuantity() {
+        return votesQuantity;
+    }
+
+    public void setVotesQuantity(long votesQuantity) {
+        this.votesQuantity = votesQuantity;
     }
 }

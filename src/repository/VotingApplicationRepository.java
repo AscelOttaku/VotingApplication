@@ -24,6 +24,12 @@ public class VotingApplicationRepository {
         optionalCandidates.ifPresent(candidates -> this.candidates = candidates);
     }
 
+    public Optional<Candidate> findCandidateById(long id) {
+        return candidates.stream()
+                .filter(candidate -> candidate.getId() == id)
+                .findFirst();
+    }
+
     public List<Candidate> getCandidates() {
         return candidates;
     }

@@ -2,21 +2,50 @@ package server;
 
 import com.sun.net.httpserver.HttpExchange;
 import service.VotingApplication;
+import utils.Util;
 
 import java.io.IOException;
-import java.util.Map;
+
+import static utils.Util.createDataModel;
 
 public class LocalVotingServer extends BasicServer {
-    private final VotingApplication server = new VotingApplication();
+    private final VotingApplication service = new VotingApplication();
 
     public LocalVotingServer(int port) throws IOException {
         super(port);
         registerGet("/", this::handleMainVotingApplicationRequest);
+        registerGet("/votes", this::handleShowVotingPageRequest);
+        registerGet("/vote", this::handleVoteRequest);
+    }
+
+    private void handleVoteRequest(HttpExchange exchange) {
+        String candidateId = getQuery(exchange).split("=")[1];
+
+        boolean res = service.voteForCandidate(Util.parseLong(candidateId));
+
+        if (!res) {
+            sendResponse404(exchange);
+            return;
+        }
+
+        var candidate = service.findCandidateById(Util.parseLong(candidateId));
+
+        renderTemplate(exchange, "ftlh/thankyou.ftlh", Util.createDataModel("candidate", candidate));
     }
 
     private void handleMainVotingApplicationRequest(HttpExchange exchange) {
-        var allCandidates = server.getAllCandidates();
+        var allCandidates = service.getAllCandidates();
 
-        renderTemplate(exchange, "ftlh/candidates.ftlh", Map.of("candidates", allCandidates));
+        renderTemplate(exchange, "ftlh/candidates.ftlh", createDataModel("candidates", allCandidates));
+    }
+
+    private void handleShowVotingPageRequest(HttpExchange exchange) {
+        var allCandidatesAndVotes = service.getCandidatesAndVotes();
+
+        renderTemplate(exchange, "ftlh/votes.ftlh", createDataModel("candidatesAndVotes", allCandidatesAndVotes));
+    }
+
+    private String getQuery(HttpExchange exchange) {
+        return exchange.getRequestURI().getQuery();
     }
 }
