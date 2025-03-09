@@ -28,6 +28,9 @@ public class DecodingFileUtil {
 
         String[] parts = kv.split("=");
 
+        if (parts.length != 2)
+            return Optional.empty();
+
         String key = URLDecoder.decode(parts[0], StandardCharsets.UTF_8);
         String value = URLDecoder.decode(parts[1], StandardCharsets.UTF_8);
 

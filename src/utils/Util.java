@@ -1,8 +1,10 @@
 package utils;
 
 import com.google.gson.reflect.TypeToken;
+import com.sun.net.httpserver.HttpExchange;
 
 import java.lang.reflect.Type;
+import java.util.List;
 import java.util.Map;
 
 public class Util {
@@ -31,5 +33,11 @@ public class Util {
         } catch (NumberFormatException e) {
             return -1;
         }
+    }
+
+    public static String getCookieValue(HttpExchange exchange) {
+        return exchange.getRequestHeaders()
+                .getOrDefault("Cookie", List.of(""))
+                .getFirst();
     }
 }

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="../css/candidates.css">
+
   <style>
     body {
       margin: 0;
@@ -133,7 +134,7 @@
         <form action="/vote?candidate=${candidate.id}" method="GET" class="candidate-card">
           <input type="hidden" name="candidate" value="${candidate.id}">
             <div class="text-center mb-3">
-              <img src="/img/${candidate.photoUrl}" alt="Candidate" class="rounded">
+              <img src="/image/${candidate.photoUrl}" alt="Candidate" class="rounded">
             </div>
           <p>${candidate.name}</p>
           <button type="submit" class="vote">Vote</button>
@@ -144,6 +145,9 @@
 
   <p>-------------------------------------------------------</p>
   <a class="back flex align-center" href="/votes">Show total votes</a>
+
+  <p>-------------------------------------------------------</p>
+  <a href="/exist" class="back flex align-center" role="button" aria-pressed="true">Exist</a>
 </div>
 </body>
 </html>

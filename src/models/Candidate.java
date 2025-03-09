@@ -1,7 +1,5 @@
 package models;
 
-import java.util.Comparator;
-
 public class Candidate implements Comparable<Candidate> {
     private static long idCount;
     private final long id;

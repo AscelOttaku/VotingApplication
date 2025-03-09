@@ -124,7 +124,7 @@
                 <form action="/vote?candidate=${candidate.id}" method="GET" class="candidate-card">
                     <div class="text-center mb-3">
                         <img src="/img/${candidate.photoUrl}" alt="Candidate" class="rounded">
-                        <p>candidate has votes ${votes}% of all votes</p>
+                        <p>${candidate.name} has votes ${votes}% of all votes</p>
                     </div>
                     <p>${candidate.name}</p>
                 </form>
