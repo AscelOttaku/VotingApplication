@@ -113,6 +113,10 @@
     .winner {
         background-color: crimson;
     }
+
+    .m-b {
+        margin-bottom: 60px;
+    }
 </style>
 
 <body>
@@ -123,7 +127,7 @@
             <#list candidatesAndVotes as candidate, votes>
                 <form action="/vote?candidate=${candidate.id}" method="GET" class="candidate-card">
                     <div class="text-center mb-3">
-                        <img src="/img/${candidate.photoUrl}" alt="Candidate" class="rounded">
+                        <img src="${candidate.photoUrl}" alt="Candidate" class="rounded">
                         <p>${candidate.name} has votes ${votes}% of all votes</p>
                     </div>
                     <p>${candidate.name}</p>
@@ -133,7 +137,7 @@
     </main>
 
     <p>-------------------------------------------------------</p>
-    <a class="back flex align-center" href="/">Back to main page</a>
+    <a class="back flex align-center m-b" href="/">Back to main page</a>
 </div>
 </body>
 </html>

@@ -116,6 +116,10 @@
       gap: 20px;
     }
 
+    .p-b {
+      margin-bottom: 60px;
+    }
+
     .candidate-card {
       width: 30%;
       box-sizing: border-box;
@@ -134,7 +138,7 @@
         <form action="/vote?candidate=${candidate.id}" method="GET" class="candidate-card">
           <input type="hidden" name="candidate" value="${candidate.id}">
             <div class="text-center mb-3">
-              <img src="/image/${candidate.photoUrl}" alt="Candidate" class="rounded">
+              <img src="${candidate.photoUrl}" alt="Candidate" class="rounded">
             </div>
           <p>${candidate.name}</p>
           <button type="submit" class="vote">Vote</button>
@@ -147,7 +151,7 @@
   <a class="back flex align-center" href="/votes">Show total votes</a>
 
   <p>-------------------------------------------------------</p>
-  <a href="/exist" class="back flex align-center" role="button" aria-pressed="true">Exist</a>
+  <a href="/exist" class="back flex align-center p-b" role="button" aria-pressed="true">Exist</a>
 </div>
 </body>
 </html>

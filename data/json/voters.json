@@ -4,7 +4,15 @@
     "lastName": "Penovich",
     "email": "Pen@gmail.com",
     "password": "p",
-    "cookieIdentity": "ed5b1dc2-b612-4855-83a4-8f685366b63a",
+    "cookieIdentity": "d24d127e-cd59-46b1-b7ef-62c68e13b079",
+    "isVoted": true
+  },
+  {
+    "firstName": "Clava",
+    "lastName": "Penovich",
+    "email": "Clava@gmail.com",
+    "password": "c",
+    "cookieIdentity": "e50415fb-db16-4cbb-b05e-7c17b935fb23",
     "isVoted": true
   }
 ]

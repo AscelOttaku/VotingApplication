@@ -23,7 +23,7 @@ public class BasicServer {
 
     public BasicServer(int port) throws IOException {
         server = createServer(port);
-        registerMainHandler();
+        registerCommonHandlers();
     }
 
     private static Configuration initFreeMarker() {
@@ -78,8 +78,13 @@ public class BasicServer {
         }
     }
 
-    private void registerMainHandler() {
+    private void registerCommonHandlers() {
         server.createContext("/", this::handleIncomingRequest);
+        registerFiles();
+    }
+
+    private void registerFiles() {
+        registerGet("jpeg", exchange -> sendFile(exchange, makeFilePath(exchange), ContentType.IMAGE_JPEG));
     }
 
     private static void setContentType(HttpExchange exchange, ContentType type) {
@@ -124,10 +129,19 @@ public class BasicServer {
 
         path = ensureStartWithSlash(path);
 
+        path = checkForImage(path);
+
         return makeKey(method, path);
     }
 
+    private static String checkForImage(String path) {
+        return path.contains(".") ? path.substring(path.lastIndexOf(".") + 1) : path;
+    }
+
     private static String ensureStartWithSlash(String route) {
+        if (route.startsWith("."))
+            return route;
+
         return route.startsWith("/") ? route : "/" + route;
     }
 
