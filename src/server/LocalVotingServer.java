@@ -1,7 +1,9 @@
 package server;
 
 import com.sun.net.httpserver.HttpExchange;
+import exception.ExceptionBody;
 import service.VotingApplication;
+import utils.JsonMapper;
 import utils.Util;
 
 import java.io.IOException;
@@ -26,7 +28,7 @@ public class LocalVotingServer extends BasicServer {
         boolean res = service.voteForCandidate(Util.parseLong(candidateId));
 
         if (!res) {
-            sendResponse404(exchange);
+            sendExceptionClass(exchange,"Candidate not found by id " + candidateId, getPath(exchange));
             return;
         }
 
@@ -38,6 +40,17 @@ public class LocalVotingServer extends BasicServer {
         dataModel.put("votingQuantityInProccent", votingQuantityInProccent);
 
         renderTemplate(exchange, "ftlh/thankyou.ftlh", dataModel);
+    }
+
+    private void sendExceptionClass(HttpExchange exchange, String message, String path) {
+        var exceptionBody = new ExceptionBody.Builder()
+                .message(message)
+                .status(404)
+                .cause(null)
+                .path(path)
+                .build();
+
+        renderTemplate(exchange, "ftlh/candidateNotFound.ftlh", createDataModel("exception", exceptionBody));
     }
 
     private void handleMainVotingApplicationRequest(HttpExchange exchange) {
@@ -54,5 +67,9 @@ public class LocalVotingServer extends BasicServer {
 
     private String getQuery(HttpExchange exchange) {
         return exchange.getRequestURI().getQuery();
+    }
+
+    private String getPath(HttpExchange exchange) {
+        return exchange.getRequestURI().getPath();
     }
 }

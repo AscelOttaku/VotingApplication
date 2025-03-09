@@ -2,12 +2,10 @@ package service;
 
 import models.Candidate;
 import repository.VotingApplicationRepository;
+import utils.JsonMapper;
 import utils.Util;
 
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -18,9 +16,11 @@ public class VotingApplication {
         var allCandidatesWithVotes = getCandidateAndVotes();
         long getVotesQuantity = getTotalVotesQuantity();
 
-        return allCandidatesWithVotes.entrySet().stream()
+        var candidatesAndVotes = allCandidatesWithVotes.entrySet().stream()
                 .collect(Collectors.toMap(Map.Entry::getKey, candidateLongEntry ->
                         Util.calculateVoteProccentInAllVotes(candidateLongEntry.getValue(), getVotesQuantity)));
+
+        return sortCandidatesInReversed(candidatesAndVotes);
     }
 
     private Map<Candidate, Long> getCandidateAndVotes() {
@@ -53,6 +53,7 @@ public class VotingApplication {
             var candidate = findCandidateById(id);
 
             candidate.setVotesQuantity(candidate.getVotesQuantity() + 1);
+            saveToRepositoryChanges();
             return true;
 
         } catch (Exception e) {
@@ -60,8 +61,16 @@ public class VotingApplication {
         }
     }
 
+    public Map<Candidate, Integer> sortCandidatesInReversed(Map<Candidate, Integer> candidatesAndVotes) {
+        return new TreeMap<>(candidatesAndVotes).reversed();
+    }
+
     public Integer getVoteQuantityInProccent(Candidate candidate) {
         return Util.calculateVoteProccentInAllVotes(candidate.getVotesQuantity(), getTotalVotesQuantity());
+    }
+
+    private void saveToRepositoryChanges() {
+        JsonMapper.writeToFile(repository.getCandidates(), "data/json/candidates.json");
     }
 
     public List<Candidate> getAllCandidates() {

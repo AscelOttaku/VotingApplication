@@ -1,6 +1,8 @@
 package models;
 
-public class Candidate {
+import java.util.Comparator;
+
+public class Candidate implements Comparable<Candidate> {
     private static long idCount;
     private final long id;
     private final String name;
@@ -12,6 +14,14 @@ public class Candidate {
         this.name = builder.name;
         this.photoUrl = builder.photoUrl;
         this.votesQuantity = builder.votesQuantity;
+    }
+
+    @Override
+    public int compareTo(Candidate o) {
+        if (votesQuantity == o.votesQuantity)
+            return name.compareTo(o.name);
+
+        return Long.compare(votesQuantity, o.votesQuantity);
     }
 
     public static class Builder {

@@ -11,6 +11,7 @@ import function.Handler;
 
 import java.io.*;
 import java.net.InetSocketAddress;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
@@ -181,6 +182,23 @@ public class BasicServer {
             exchange.sendResponseHeaders(ResponseCodes.REDIRECT.getCode(), 0);
             exchange.close();
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    protected final void sendFile(
+            HttpExchange exchange,
+            Path pathToFile,
+            ContentType contentType
+    ) {
+        try {
+            if (Files.notExists(pathToFile)) {
+                sendResponse404(exchange);
+                return;
+            }
+            byte[] data = Files.readAllBytes(pathToFile);
+            sendByteData(exchange, ResponseCodes.OK, contentType, data);
         } catch (IOException e) {
             e.printStackTrace();
         }
