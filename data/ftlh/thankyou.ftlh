@@ -5,12 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="../css/candidates.css">
+    <link href="../css/thankYou.css">
     <title>Thank you!!</title>
 </head>
 
 <style>
-    html,
     body {
         margin: 0;
         padding: 0;
@@ -111,7 +110,7 @@
     <main class="flex flex-wrap align-center">
         <div class="card">
             <div class="flex flex-col align-center" href="/">
-                <img src="/img/${candidate.photoUrl}">
+                <img src="${candidate.photoUrl}">
                 <p>Thank you for your vote!</p>
                 <p>Now I have ${votingQuantityInProccent}% of all votes</p>
             </div>

@@ -1,4 +1,3 @@
-html,
 body {
     margin: 0;
     padding: 0;
@@ -23,18 +22,19 @@ img {
     width: 300px;
     padding: 10px 0px;
     background-color: black;
-    color:orange;
+    color: orange;
     border-radius: 5px;
 }
+
 .back:hover {
     transition-duration: 0.3s;
     background-color: orange;
-    color:black;
+    color: black;
 }
 
 .vote {
     border: 0;
-    width: 300px;
+    width: 100%;
     text-transform: uppercase;
     padding: 5px 0;
     background-color: gray;
@@ -75,18 +75,42 @@ img {
     justify-content: center;
 }
 
-.card {
-    flex: 300px 0 0;
+.candidates-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.candidate-card {
+    width: 30%;
     box-sizing: border-box;
-    margin: 20px 0 0 0;
-    padding: 10px 0;
-    border-radius: 5px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-.card:hover {
-    background-color: whitesmoke;
+.candidate-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
 }
 
-.winner {
-    background-color: crimson;
+.candidates-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.p-b {
+    margin-bottom: 60px;
+}
+
+.candidate-card {
+    width: 30%;
+    box-sizing: border-box;
 }

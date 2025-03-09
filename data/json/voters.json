@@ -4,7 +4,7 @@
     "lastName": "Penovich",
     "email": "Pen@gmail.com",
     "password": "p",
-    "cookieIdentity": "d24d127e-cd59-46b1-b7ef-62c68e13b079",
+    "cookieIdentity": "e71931a0-6117-4384-9ab0-3954ced50d6b",
     "isVoted": true
   },
   {
@@ -12,7 +12,23 @@
     "lastName": "Penovich",
     "email": "Clava@gmail.com",
     "password": "c",
-    "cookieIdentity": "e50415fb-db16-4cbb-b05e-7c17b935fb23",
+    "cookieIdentity": "a31f1a39-6e1d-4eb8-b071-c944ce980b6d",
     "isVoted": true
+  },
+  {
+    "firstName": "Pen",
+    "lastName": "p",
+    "email": "p@gmail",
+    "password": "p1",
+    "cookieIdentity": "25872250-7bad-4c86-b3ca-8a9c2686fa1e",
+    "isVoted": false
+  },
+  {
+    "firstName": "Jim",
+    "lastName": "J",
+    "email": "J@j",
+    "password": "j12345",
+    "cookieIdentity": "119da0ae-af33-4e51-a150-f779b1a91be3",
+    "isVoted": false
   }
 ]

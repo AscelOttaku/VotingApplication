@@ -134,7 +134,7 @@
             </fieldset>
             <div class="space">
                 <button type="submit" class="register-button">
-                    <a class="color" href="/auth/login">Login</a>
+                    <a class="color" href="/login">Login</a>
                 </button>
             </div>
         </form>

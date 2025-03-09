@@ -22,13 +22,14 @@ img {
     width: 300px;
     padding: 10px 0px;
     background-color: black;
-    color:orange;
+    color: orange;
     border-radius: 5px;
 }
+
 .back:hover {
     transition-duration: 0.3s;
     background-color: orange;
-    color:black;
+    color: black;
 }
 
 .vote {
@@ -74,24 +75,12 @@ img {
     justify-content: center;
 }
 
-.candidate-card {
-    background-color: white;
-    border: 1px solid #ccc;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    padding: 10px;
-    text-align: center;
-}
-
-.candidates-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.candidate-card {
-    width: 30%;
+.card {
+    flex: 300px 0 0;
     box-sizing: border-box;
+    margin: 20px 0 0 0;
+    padding: 10px 0;
+    border-radius: 5px;
 }
 
 .card:hover {
@@ -100,8 +89,4 @@ img {
 
 .winner {
     background-color: crimson;
-}
-
-.m-b {
-    margin-bottom: 60px;
 }

@@ -14,7 +14,7 @@
 </div>
 <div class="space">
     <button type="submit" class="register-button">
-        <a class="text-color" href="/auth/login">Вернуться назад</a>
+        <a class="text-color" href="/login">Вернуться назад</a>
     </button>
 </div>
 </body>

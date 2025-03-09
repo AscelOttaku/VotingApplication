@@ -21,18 +21,18 @@
     "id": 4,
     "name": "Brunilda Mikels",
     "photoUrl": "images/4.jpeg",
-    "votesQuantity": 0
+    "votesQuantity": 3
   },
   {
     "id": 5,
     "name": "Hubert Takahashi",
     "photoUrl": "images/5.jpeg",
-    "votesQuantity": 2
+    "votesQuantity": 3
   },
   {
     "id": 6,
     "name": "Hershel Caffrey",
     "photoUrl": "images/6.jpeg",
-    "votesQuantity": 0
+    "votesQuantity": 1
   }
 ]

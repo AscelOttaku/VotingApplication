@@ -80,11 +80,12 @@ public class BasicServer {
 
     private void registerCommonHandlers() {
         server.createContext("/", this::handleIncomingRequest);
-        registerFiles();
+        registerFiles("jpeg", ContentType.IMAGE_JPEG);
+        registerFiles("css", ContentType.TEXT_CSS);
     }
 
-    private void registerFiles() {
-        registerGet("jpeg", exchange -> sendFile(exchange, makeFilePath(exchange), ContentType.IMAGE_JPEG));
+    private void registerFiles(String fileExtension, ContentType contentType) {
+        registerGet(fileExtension, exchange -> sendFile(exchange, makeFilePath(exchange), contentType));
     }
 
     private static void setContentType(HttpExchange exchange, ContentType type) {
